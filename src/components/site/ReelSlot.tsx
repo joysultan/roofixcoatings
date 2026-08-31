@@ -3,8 +3,8 @@ import { Maximize2, Pause, Play, Volume2, VolumeX } from "lucide-react";
 
 export type ReelSlotProps = {
   /** Add your Roofix Coatings reel here, e.g. "/videos/reel-01.mp4" */
-  src?: string;
-  poster?: string;
+  src?: string | undefined;
+  poster?: string | undefined;
   number: string;
   label: string;
 };
