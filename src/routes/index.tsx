@@ -1,24 +1,51 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { Navbar } from "@/components/site/Navbar";
+import { Hero } from "@/components/site/Hero";
+import { Services } from "@/components/site/Services";
+import { WhyRoofix } from "@/components/site/WhyRoofix";
+import { Projects } from "@/components/site/Projects";
+import { BeforeAfter } from "@/components/site/BeforeAfter";
+import { Story } from "@/components/site/Story";
+import { SocialProof } from "@/components/site/SocialProof";
+import { AussieRoofs } from "@/components/site/AussieRoofs";
+import { FinalCTA, Footer } from "@/components/site/FinalCTA";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITLE = "Roofix Coatings | Roof Painting & Restoration Specialists";
+const DESCRIPTION =
+  "Roofix Coatings restores and protects Aussie roofs. Roof painting and roof restoration specialists — 100% recommend from 45 reviews.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <SmoothScroll />
+      <Navbar />
+      <main>
+        <Hero />
+        <Services />
+        <WhyRoofix />
+        <Projects />
+        <BeforeAfter />
+        <Story />
+        <SocialProof />
+        <AussieRoofs />
+        <FinalCTA />
+      </main>
+      <Footer />
+    </>
   );
 }
